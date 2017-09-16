@@ -1,0 +1,10 @@
+{
+	"cheesePrices" : [
+	{ 
+	  	"Goat": 0.5,
+	  	"Chevre": 5,
+	  	"Gruyere": 3,
+	  	"No Cheese": 0
+	  }
+	]
+}

@@ -1,0 +1,10 @@
+{
+"condimentPrices" : [ 
+	{ 
+	  	"Oil": 1,
+	  	"Mayo": 1,
+	  	"Mustard": 1,
+	  	"No cheese": 0
+	  }
+	]
+}

@@ -1,0 +1,10 @@
+{
+"meatPrices" : [
+	{ 
+	  	"Panda": 6,
+	  	"Droggon": 4,
+	  	"Turkey": 1,
+	  	"None": 0
+	  }
+	]
+}
