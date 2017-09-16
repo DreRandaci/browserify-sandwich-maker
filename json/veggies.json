@@ -1,0 +1,10 @@
+{
+"veggiePrices" : [ 
+	{ 
+	  	"Peppers": 1,
+	  	"Arugula": 1,
+	  	"Tomato": 1,
+	  	"None": 0
+	  }
+	]
+}

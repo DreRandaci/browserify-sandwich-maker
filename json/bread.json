@@ -1,0 +1,10 @@
+{
+	"breadPrices" : [
+		{ 
+	  	"Kaiser": 2,
+	  	"Wonder Bread": 0,
+	  	"Spelt": 1,
+	  	"None": 1
+	  }
+	]
+}
