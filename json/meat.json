@@ -4,7 +4,9 @@
 	  	"Panda": 6,
 	  	"Droggon": 4,
 	  	"Turkey": 1,
-	  	"None": 0
+	  	"None": 0,
+	  	"id": "ingredient",
+	  	"category": "Meat"
 	  }
 	]
 }

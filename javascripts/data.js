@@ -6,50 +6,50 @@ const loadCondiments = require('./condiments');
 const loadMeat = require('./meat');
 const loadVeggies = require('./veggies');
 
+//TODO: get rid of unnecessary global arrays, move to inside each function
+// let breadArray = [];
+// let cheeseArray = [];
+// let condimentsArray = [];
+// let veggieArray = [];
+// let meatArray = [];
 let allItemsArray = [];
-let allCheckedItems = [];
 
 const errorFunction = () => {
 	console.log('Error');
 };
 
 const whenBreadLoads = function(){
-	let breadArray = JSON.parse(this.responseText).breadPrices;
-	allItemsArray.push(breadArray);
+	allItemsArray.push(JSON.parse(this.responseText).breadPrices);
 	loadCheese(whenCheeseLoads, errorFunction);
 };
 
 const whenCheeseLoads = function(){
-	let cheeseArray = JSON.parse(this.responseText).cheesePrices;
-	allItemsArray.push(cheeseArray);
+	allItemsArray.push(JSON.parse(this.responseText).cheesePrices);
 	loadCondiments(whenCondimentsLoad, errorFunction);
 };
 
 const whenCondimentsLoad = function(){
-	let condimentsArray = JSON.parse(this.responseText).condimentPrices;
-	allItemsArray.push(condimentsArray);
-	loadMeat(whenVeggiesLoad, errorFunction);
+	allItemsArray.push(JSON.parse(this.responseText).condimentPrices);
+	loadMeat(whenMeatLoads, errorFunction);
+};
+
+const whenMeatLoads = function(){
+	allItemsArray.push(JSON.parse(this.responseText).meatPrices);
+	loadVeggies(whenVeggiesLoad, errorFunction);
 };
 
 const whenVeggiesLoad = function(){
-	let veggieArray = JSON.parse(this.responseText).veggiePrices;
-	allItemsArray.push(veggieArray);
-	// combineArray(veggieArray);
+	allItemsArray.push(JSON.parse(this.responseText).veggiePrices);
 };
-
-// const combineArray = (veggieArray) => {
-// 	veggieArray.forEach((item) => {
-// 		breadArray.forEach((item)){
-
-// 		}
-// 	});	
-// };
 
 const initializer = () => {
 	loadBread(whenBreadLoads, errorFunction);
 };
 
-module.exports = initializer;
+const getAllItems = () => {
+	//creates one object out of the array
+	let allItems = Object.assign({}, allItemsArray);
+	return allItems;
+};
 
-
-
+module.exports = {initializer, getAllItems};

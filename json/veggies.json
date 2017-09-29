@@ -4,7 +4,9 @@
 	  	"Peppers": 1,
 	  	"Arugula": 1,
 	  	"Tomato": 1,
-	  	"None": 0
+	  	"None": 0,
+	  	"id": "ingredient",
+	  	"category": "Veggies"
 	  }
 	]
 }

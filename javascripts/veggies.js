@@ -1,6 +1,6 @@
 'use strict';
 
-const loadVeggie = (onVeggieLoad, onVeggieError) => {
+const loadVeggies = (onVeggieLoad, onVeggieError) => {
 	const veggieLoader = new XMLHttpRequest();
 	veggieLoader.addEventListener('error', onVeggieError);
 	veggieLoader.addEventListener('load', onVeggieLoad);
@@ -8,4 +8,4 @@ const loadVeggie = (onVeggieLoad, onVeggieError) => {
 	veggieLoader.send();
 };
 
-module.exports = loadVeggie;
+module.exports = loadVeggies;
