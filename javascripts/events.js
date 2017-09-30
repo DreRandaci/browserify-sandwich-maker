@@ -10,7 +10,6 @@ let allOptions = document.getElementsByTagName('input');
 console.log('allOptions.length: ', allOptions.length);
 let allCheckedItems = [];
 
-
 btn.addEventListener('click', (e) => {
     let checkedToppings = [];
     for (let i=0; i<allOptions.length; i++){
@@ -25,10 +24,13 @@ btn.addEventListener('click', (e) => {
 const combineToppings = (checkedToppings) => {
     let allItems = data.getAllItems();
     console.log('allItems in combineToppings', allItems);
-    
-    // for (let i=0; i<allItems[0].length; i++) {
-    //     console.log('price in combineToppings', allItems[i]);
-    // }
+    let counter = 0;
+    for (let index in allItems) {
+        // if (allItems[i][i] === checkedToppings[i]){
+        //     console.log('this is inside the for loop in combineToppings');
+        // }
+        // console.log('price in combineToppings', allItems[i]);
+    }
     // clearDom();
     // writeToDom();
 };
