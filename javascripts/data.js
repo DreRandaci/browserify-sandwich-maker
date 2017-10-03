@@ -6,50 +6,85 @@ const loadCondiments = require('./condiments');
 const loadMeat = require('./meat');
 const loadVeggies = require('./veggies');
 
-let allItemsArray = [];
-let allCheckedItems = [];
+let breadArray = [];
+let cheeseArray = [];
+let condimentsArray = [];
+let veggieArray = [];
+let meatArray = [];
+let allItemsArray = [{'category': 'all items'}];
 
 const errorFunction = () => {
 	console.log('Error');
 };
 
 const whenBreadLoads = function(){
-	let breadArray = JSON.parse(this.responseText).breadPrices;
-	allItemsArray.push(breadArray);
+	breadArray = JSON.parse(this.responseText).breadPrices;
 	loadCheese(whenCheeseLoads, errorFunction);
 };
 
 const whenCheeseLoads = function(){
-	let cheeseArray = JSON.parse(this.responseText).cheesePrices;
-	allItemsArray.push(cheeseArray);
+	cheeseArray = JSON.parse(this.responseText).cheesePrices;
 	loadCondiments(whenCondimentsLoad, errorFunction);
 };
 
 const whenCondimentsLoad = function(){
-	let condimentsArray = JSON.parse(this.responseText).condimentPrices;
-	allItemsArray.push(condimentsArray);
-	loadMeat(whenVeggiesLoad, errorFunction);
+	condimentsArray = JSON.parse(this.responseText).condimentPrices;
+	loadMeat(whenMeatLoads, errorFunction);
+};
+
+const whenMeatLoads = function(){
+	meatArray = JSON.parse(this.responseText).meatPrices;
+	loadVeggies(whenVeggiesLoad, errorFunction);
 };
 
 const whenVeggiesLoad = function(){
-	let veggieArray = JSON.parse(this.responseText).veggiePrices;
-	allItemsArray.push(veggieArray);
-	// combineArray(veggieArray);
+	veggieArray = JSON.parse(this.responseText).veggiePrices;
+	combineArrays();
 };
-
-// const combineArray = (veggieArray) => {
-// 	veggieArray.forEach((item) => {
-// 		breadArray.forEach((item)){
-
-// 		}
-// 	});	
-// };
 
 const initializer = () => {
 	loadBread(whenBreadLoads, errorFunction);
 };
 
-module.exports = initializer;
+const combineArrays = () => {
+	breadArray.forEach((bread)=> {
+		cheeseArray.forEach((cheese) => {
+			condimentsArray.forEach((condiment) => {
+				meatArray.forEach((meat) => {
+					veggieArray.forEach((veggie) => {
+						allItemsArray.forEach((item) => {				
+							if (veggie.id === meat.id){								
+								item.panda = meat.Panda;
+								item.droggon = meat.Droggon;
+								item.turkey = meat.Turkey;
+								item.noMeat = meat.None;
+								item.oil = condiment.Oil;
+								item.mayo = condiment.Mayo;
+								item.mustard = condiment.Mustard;
+								item.noSauce = condiment.None;
+								item.goat = cheese.Goat;
+								item.chevre = cheese.Chevre;
+								item.gruyere = cheese.Gruyere;
+								item.noCheese = cheese.None;
+								item.kaiser = bread.Kaiser;
+								item.wonderBread = bread.WonderBread;
+								item.spelt = bread.Spelt;
+								item.noBread = bread.None;
+								item.peppers = veggie.Peppers;
+								item.arugula = veggie.Arugula;
+								item.tomato = veggie.Tomato;
+								item.noVeggies = veggie.None;
+							}	
+						});
+					});
+				});
+			});
+		});
+	});
+};
 
+const getAllItems = () => {
+	return allItemsArray[0];
+};
 
-
+module.exports = {initializer, getAllItems};

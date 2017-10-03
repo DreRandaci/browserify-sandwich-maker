@@ -2,9 +2,85 @@
 <html>
 <head>
 	<title>Browserify Sammie Maker</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./styles/main.css">
 </head>
 <body>
+
+	<div class="jumbotron">
+  		<div class="container">
+    		<h1>Sandwich Maker</h1>
+		 </div>
+	</div>				
+		<div id='container' class='container'>
+			<div class='row'>
+				<div class='.col-md-4 thumbnail text-center'>
+					<label for="bread">Bread Options:</label>
+					<div id='bread' class='text-center'>
+						<input type="radio" name="bread" value='kaiser'> Kaiser
+						<input type="radio" name="bread" value='wonderBread'> Wonder Bread
+						<input type="radio" name="bread" value='spelt'> Organic Spelt with Kammut
+						<input type="radio" class='radioBtn' name="bread" value='no bread'> No Bread
+					</div>
+				</div>
+				
+				<div class='.col-md-4 thumbnail text-center'>
+					<label for="cheese">Cheese Options:</label>
+					<div id='cheese' class='text-center'>
+						<input type="checkbox" name="cheese" value='goat'> Goat
+						<input type="checkbox" name="cheese" value='chevre'> Chevre
+						<input type="checkbox" name="cheese" value='gruyere'> Gruyere
+						<input type="radio" class='radioBtn' name="cheese" value='no cheese'> No Cheese
+					</div>
+				</div>
+				
+				<div class='.col-md-4 thumbnail text-center'>
+					<label for="meat" class='text-center'>Meat Options:</label>
+					<div id='meat' class='text-center'>
+						<input type="checkbox" name="meat" value='panda'> Panda
+						<input type="checkbox" name="meat" value='droggon'> Droggon
+						<input type="checkbox" name="meat" value='turkey'> Turkey
+						<input type="radio" class='radioBtn' name="meat" value='no meat'> No Meat
+					</div>	
+				</div>
+				
+				<div class='.col-md-4 thumbnail text-center'>
+					<label for="veggies">Veggie Options:</label>
+					<div id='veggies' class='text-center'>
+						<input type="checkbox" name="veggies" value='peppers'> Peppers
+						<input type="checkbox" name="veggies" value='arugula'> Arugula
+						<input type="checkbox" name="veggies" value='tomato'> Heirloom Tomato's
+						<input type="radio" class='radioBtn' name="veggies" value='no veggies'> Plain
+					</div>	
+				</div>
+				
+				<div class='.col-md-4 thumbnail text-center'>
+					<label for="condiments">Condiments:</label>
+					<div id='condiments' class='text-center'>
+						<input type="checkbox" name="condiments" value='oil'> Olive Oil and Vinegar
+						<input type="checkbox" name="condiments" value='mayo'> Mayo
+						<input type="checkbox" name="condiments" value='mustard'> Deli Mustard
+						<input type="radio" class='radioBtn' name="condiments" value='no sauce'> None
+					</div>	
+				</div>
+				<div class='container'>
+					<div class='row'>
+						<div class='col-md-2 col-md-offset-5 thumbnail text-center'>	
+							<p class='border'>Submit Your Order</p>
+							<button id='btn' class='btn btn-success'>Submit</button>
+							<div id='sammieContainer' class='text-center'></div>				
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+		<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 <script type="text/javascript" src='./dist/app.js'></script>
 </body>

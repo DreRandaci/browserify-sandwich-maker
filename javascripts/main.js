@@ -1,5 +1,8 @@
 'use strict';
 
-const doItAll = require('./data');
+const data = require('./data');
+const events = require('./events');
 
-doItAll.initializer();
+data.initializer();
+events.btnClick();
+events.btnCheck();
