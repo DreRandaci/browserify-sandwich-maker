@@ -1,34 +1,22 @@
 'use strict';
 
 const data = require('./data');
-// console.log('all items within sammieMaker', allItems);
+const events = require('./events');
 
-let finalSandwichPrice = 0;
-// let breadPrice = 0;
-let sammiePrice = 0;
-let checkedItem;
-let currentSelectedItems = [];
-
-const sammieMaker = (e) => {
-  let items = data.getAllItems();
-  console.log('all items variable in sammieMaker', items);
-  // Get the value chosen from the DOM
-    let selectedTopping = e.target.value;
-    console.log('selectedTopping in sammieMaker:', selectedTopping);
-  // Add the topping to the SandwichMaker to increase the total price
-  for (let key in items) {
-  	// Determine the price of the topping chosen
-  	 if (selectedTopping === key && e.target.checked) {  		
-  		finalSandwichPrice += items[key];
-      checkedItem = e.target.value;
-      currentSelectedItems.push(checkedItem);
-  	} else if (selectedTopping === key && e.target.checked === false) {
-  		finalSandwichPrice -= items[key];
-  	} 
+const sammiePrice = (checkedToppings) => {
+  let price = 0;
+  let allItems = data.getAllItems();
+  let objLength = Object.keys(allItems).length;
+  let objKeys = Object.keys(allItems);
+  let objValues = Object.values(allItems);
+  for (let i=0; i<objLength; i++){
+    for (let j=0; j<checkedToppings.length; j++){
+      if (objKeys[i] === checkedToppings[j]) {  	
+        price += objValues[i];
+      }
+    }
   }
-  // sammiePrice = finalSandwichPrice + breadPrice;
-  return finalSandwichPrice;
-  // return checkedMeat;
+  return price;
 };
 
-module.exports = {sammieMaker};
+module.exports = {sammiePrice};

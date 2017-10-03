@@ -3,51 +3,41 @@
 const buildSammie = require('./sammieMaker');
 const data = require('./data');
 
-let container = document.getElementById('output');
+let container = document.getElementById('container');
 let sammieContainer = document.getElementById('sammieContainer');
 let btn = document.getElementById("btn");
 let allOptions = document.getElementsByTagName('input');
-console.log('allOptions.length: ', allOptions.length);
-let allCheckedItems = [];
 
-btn.addEventListener('click', (e) => {
-    let checkedToppings = [];
-    for (let i=0; i<allOptions.length; i++){
-        if (allOptions[i].checked) {
-            checkedToppings.unshift(allOptions[i].value);
+const btnCheck = () => {
+    container.addEventListener('change', (e) => {
+        if (e.target.type === "radio") {
+            console.log('a radio btn was clicked');
+            allOptions = false;
         }
-    }
-    console.log('this should be the checked items:', checkedToppings);
-    combineToppings(checkedToppings);
-});
-
-const combineToppings = (checkedToppings) => {
-    let allItems = data.getAllItems();
-    console.log('allItems in combineToppings', allItems);
-    let counter = 0;
-    for (let index in allItems) {
-        // if (allItems[i][i] === checkedToppings[i]){
-        //     console.log('this is inside the for loop in combineToppings');
-        // }
-        // console.log('price in combineToppings', allItems[i]);
-    }
-    // clearDom();
-    // writeToDom();
+    });
 };
 
-btn.addEventListener('click', (e) => {
-    clearDom();
-});
-
-const writePrice = (price) => {
-	sammieContainer.innerHTML = `Total: $${price}`;
+const btnClick = () => {
+    btn.addEventListener('click', (e) => {
+        let checkedToppings = [];
+        for (let i=0; i<allOptions.length; i++){
+            if (allOptions[i].checked) {
+                checkedToppings.unshift(allOptions[i].value);
+            }
+        }
+        writeToDom(checkedToppings, buildSammie.sammiePrice(checkedToppings));
+    });
 };
+
 const clearDom = () => {
 	sammieContainer.innerHTML = '';
 };
-const writeToDom = (sammieAndBreadCombinedPrice) => {
-	allCheckedItems.forEach(function(topping) {
-		sammieContainer.innerHTML += `<li>${topping}</li>`;
+const writeToDom = (checkedToppings, price) => {
+    clearDom();
+	checkedToppings.forEach((topping) => {
+		sammieContainer.innerHTML += `<h4>${topping}</h4>`;
 	});
-	//sammieContainer.innerHTML += `Total: $${sammieAndBreadCombinedPrice}`;
+	sammieContainer.innerHTML += `Total: $${price}`;
 };
+
+module.exports = {btnClick, writeToDom, btnCheck};
