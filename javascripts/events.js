@@ -10,9 +10,15 @@ let allOptions = document.getElementsByTagName('input');
 
 const btnCheck = () => {
     container.addEventListener('change', (e) => {
-        if (e.target.type === "radio") {
-            console.log('a radio btn was clicked');
-            allOptions = false;
+        if (e.target.type === "checkbox") {
+            e.target.parentNode.children[3].checked = false;
+        } else if (e.target.type === "radio") {
+            let currentCheckboxesToClear = e.target.parentNode.children;
+            for (let i = 0; i < currentCheckboxesToClear.length; i++) {
+                if (currentCheckboxesToClear[i].type.toLowerCase() == 'checkbox') {
+                    currentCheckboxesToClear[i].checked = false;
+                }
+            }
         }
     });
 };
